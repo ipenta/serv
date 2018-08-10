@@ -1,14 +1,6 @@
-const path = require('path');
+const config = require('./config/config');
+const app = require('./config/app');
 
-const app = require('express')();
-const bodyParser = require('body-parser');
-const router = require('./config/router');
-const port = process.env.PORT || 9527;
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-router(app)
-
-app.listen(port)
-console.log('RESTful API server started on: ' + port);
+app.listen(config.port, () => {
+  console.info(`server started on port ${config.port} (${config.env})`); // eslint-disable-line no-console
+});
