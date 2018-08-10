@@ -15,7 +15,8 @@ if (error) {
 
 const config = {
   env: envVars.NODE_ENV,
-  port: envVars.PORT
+  port: envVars.PORT,
+  root: process.cwd()
 };
 
 module.exports = config;

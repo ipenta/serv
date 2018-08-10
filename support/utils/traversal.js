@@ -19,6 +19,7 @@ const routerFilter = function (userDir) {
   traversal(userDir,function (file) {
     regexp.test(file) ? routers.push(require(file)) : ''
   })
+
   return routers;
 }
 

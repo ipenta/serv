@@ -9,5 +9,8 @@ const paramValidation = require('./auth.validation');
 router.route('/login')
   .post(validate(paramValidation.login), authController.login);
 
+router.route('/register')
+  .post(validate(paramValidation.register), authController.register);
+
 
 module.exports = router;

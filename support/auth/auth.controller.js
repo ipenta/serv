@@ -1,5 +1,5 @@
 
-function login(req,resp) {
+const login = function (req, resp) {
   resp.json({
     "status": 200,
     "body": {
@@ -8,7 +8,17 @@ function login(req,resp) {
   });
 }
 
+const register = function (req, resp) {
+  resp.json({
+    "status": 200,
+    "body": {
+      "id": "jsdjjf"
+    }
+  });
+}
+
+
 function getRandomNumber() {
 }
 
-module.exports = { login, getRandomNumber };
+module.exports = { login, register, getRandomNumber };

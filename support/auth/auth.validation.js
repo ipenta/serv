@@ -7,5 +7,11 @@ module.exports = {
       username: Joi.string().required(),
       password: Joi.string().required()
     }
+  },
+  register: {
+    body: {
+      username: Joi.string().required(),
+      password: Joi.string().required()
+    }
   }
 };
