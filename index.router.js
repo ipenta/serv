@@ -1,31 +1,11 @@
-const path = require('path')
-const readDir = require('readdir');
-const userDir = path.resolve(__dirname,'./server')
+const traversal = require('./support/utils/traversal');
+const userDir = require('path').resolve(__dirname,'./server')
+const routers = []
 
-readDir.read(userDir , ['**/**.router.js'], function (err, filesArray) {
-   console.log(require('path').join(userDir,filesArray[1]))
-});
+const regexp = new RegExp(/^.*(.router.js)$/)
 
-
-// function travel(dir, callback) {
-//   fs.readdirSync(dir).forEach(function (file) {
-//     var pathname = path.join(dir, file);
-//
-//     if (fs.statSync(pathname).isDirectory()) {
-//         travel(pathname, callback);
-//     } else {
-//         callback(pathname);
-//     }
-//   });
-// }
-//
-// travel(path.resolve(__dirname,'./server'),function (file) {
-//   console.log(file)
-// })
-
-
-
-
-const routers = [require('./server/project/project.router')]
+traversal(userDir,function (file) {
+  regexp.test(file) ? routers.push(require(file)) : ''
+})
 
 module.exports = (callback => callback(routers))
