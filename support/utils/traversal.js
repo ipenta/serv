@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const regexp = new RegExp(/^.*(.router.js)$/);
 
 const traversal = function (dir, callback) {
   fs.readdirSync(dir).forEach(function (file) {
@@ -13,4 +14,12 @@ const traversal = function (dir, callback) {
   });
 }
 
-module.exports = traversal;
+const routerFilter = function (userDir) {
+  const routers = [];
+  traversal(userDir,function (file) {
+    regexp.test(file) ? routers.push(require(file)) : ''
+  })
+  return routers;
+}
+
+module.exports = {traversal,routerFilter};
