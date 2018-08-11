@@ -1,0 +1,15 @@
+version: '2.0'
+services:
+  api:
+    build: .
+    ports:
+      - 9527:9527
+    restart: unless-stopped
+    volumes:
+      - $PWD:/usr/src/app/
+    links:
+      - mongo
+  mongo:
+    image: bitnami/mongodb:latest
+    ports:
+      - 27017:27017

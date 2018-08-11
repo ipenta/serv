@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 router.route('/')
   .get(function (res,resp) {
-    resp.json({"name":"entry----12"});
+    resp.json({"name":"entryd1"});
   });
 
 router.route('/:id')
