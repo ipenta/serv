@@ -1,5 +1,5 @@
 const Joi = require('joi');
-
+const cert = require('fs').readFileSync(require('path').join(__dirname,'./sercet/private.key'));
 require('dotenv').config();
 
 const envVarsSchema = Joi.object({
@@ -16,6 +16,7 @@ if (error) {
 const config = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
+  jwtSecret: cert,
   root: process.cwd()
 };
 

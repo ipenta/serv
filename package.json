@@ -18,6 +18,7 @@
     "helmet": "^3.13.0",
     "http-proxy": "^1.17.0",
     "joi": "^13.5.2",
+    "jsonwebtoken": "^8.3.0",
     "nedb-promise": "^2.0.1",
     "readdir": "^0.1.0"
   }
