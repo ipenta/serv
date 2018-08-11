@@ -28,7 +28,6 @@ const routerFilter = function (sourceDir) {
       router.use(result[1],require(result[0]));
     }
   })
-  console.log(router)
   return router;
 }
 

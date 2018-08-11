@@ -6,7 +6,7 @@ const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string().allow(['development', 'production', 'test', 'provision'])
     .default('development'),
   PORT: Joi.number().default(9527),
-  API_PREFIX: Joi.string().default('/v1/api')
+  API_PREFIX: Joi.string().default('/api')
 }).unknown().required();
 
 const { error, value: envVars } = Joi.validate(process.env, envVarsSchema);

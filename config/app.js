@@ -20,7 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 
+// 系统级别API
 app.use(config.apiPrefix,supportRouter)
+// 用户级别API
 app.use(config.apiPrefix,serverRouter)
 
 app.use((err, req, res, next) => {
