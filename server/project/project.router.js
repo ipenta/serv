@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.route('/project')
+router.route('/main')
   .get(function (res,resp) {
     resp.json({"name":"project"});
   });

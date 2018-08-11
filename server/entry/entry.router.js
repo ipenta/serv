@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-router.route('/entry')
+router.route('/')
   .get(function (res,resp) {
     resp.json({"name":"entry"});
   });
 
-router.route('/entry/:id')
+router.route('/:id')
   .get(function (res,resp) {
     resp.json({"name":"entry","id":res.query});
   });
