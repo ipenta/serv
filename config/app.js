@@ -9,16 +9,21 @@ const httpStatus = require('http-status');
 
 const {supportRouter,serverRouter} = require('./router');
 
+const tokenfilter = require('./tokenfilter');
 const expressValidation = require('express-validation');
 
 const config = require('./config');
 const APIError = require('../support/utils/APIError');
+
+app.set('jwtSecret',config.jwtSecret)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 app.use(helmet());
+
+app.use(tokenfilter)
 
 // 系统级别API
 app.use(config.apiPrefix,supportRouter)

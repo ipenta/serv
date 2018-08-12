@@ -20,7 +20,7 @@ router.route('/:id')
   .get(function (res, resp) {
     resp.json({
       "name": "entry",
-      "id": res.query
+      "id": res.params
     });
   });
 
