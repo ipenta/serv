@@ -1,11 +1,13 @@
-version: "3"
+version: "3.7"
 services:
   apimongo:
-    image: bitnami/mongodb:latest
+    image: mongo
     hostname: apimongo
     container_name: apimongo
     restart: unless-stopped
-    ports:
+    volumes:
+      - $PWD/data/:/data/db
+    expose:
       - 27017
   api:
     build: .
