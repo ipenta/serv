@@ -1,22 +1,17 @@
 const router = require('express').Router();
 
+const validate = require('express-validation');
+
+const validation = require('./entity.validation');
+const controller = require('./entity.controller');
+
 router.route('/')
-  .get(function (res,resp) {
-    resp.json({"name":"list entity"});
-  })
-  .post(function (res,resp) {
-    resp.json({"name":"create entity"})
-  })
+  .get(controller.list)
+  .post(validate(validation.entity), controller.create)
 
 router.route('/:id')
-  .get(function (res,resp) {
-    resp.json({"name":"show entity"});
-  })
-  .patch(function (res,resp) {
-    resp.json({"name":"update entity"})
-  })
-  .delete(function (res,resp) {
-    resp.json({"name":"delete entity"})
-  })
+  .get(controller.findById)
+  .patch(validate(validation.entity), controller.patch)
+  .delete(validate(validation.entity), controller.remove)
 
 module.exports = router;

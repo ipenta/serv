@@ -1,21 +1,21 @@
 const router = require('express').Router();
 
 router.route('/')
-  .get(function (res,resp) {
+  .get(function (req,resp) {
     resp.json({"name":"list inspection"});
   })
-  .post(function (res,resp) {
+  .post(function (req,resp) {
     resp.json({"name":"create inspection"})
   })
 
 router.route('/:id')
-  .get(function (res,resp) {
+  .get(function (req,resp) {
     resp.json({"name":"show inspection"});
   })
-  .patch(function (res,resp) {
+  .patch(function (req,resp) {
     resp.json({"name":"update inspection"})
   })
-  .delete(function (res,resp) {
+  .delete(function (req,resp) {
     resp.json({"name":"delete inspection"})
   })
 
