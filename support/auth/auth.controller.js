@@ -5,7 +5,7 @@ const APIError = require('../utils/APIError');
 const httpStatus = require('http-status');
 
 const login = function (req, resp, next) {
-  Auth.findOne(req.body,'identifier identity_type').catch(err=> APIError(err))
+  Auth.findOne(req.body,'identifier identity_type')
     .then(result=>{
       if (result) {
         const token = jwt.sign({ identifier: result.identifier }, config.jwtSecret)
@@ -18,7 +18,7 @@ const login = function (req, resp, next) {
         const err = new APIError('没有权限', httpStatus.UNAUTHORIZED, true);
         return next(err);
       }
-    })
+    }).catch(err => next(new APIError(err)))
 }
 
 const register = function (req, resp, next) {
