@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const AuthSchema = new mongoose.Schema({
+const ModelSchema = new mongoose.Schema({
   identity_type: {
     type: String,
     required: true
@@ -15,4 +15,4 @@ const AuthSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Auth', AuthSchema);
+module.exports = mongoose.model('Auth', ModelSchema);

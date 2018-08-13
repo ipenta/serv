@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const authController = require('./auth.controller');
+const authController = require('./controller');
 
 const validate = require('express-validation');
-const paramValidation = require('./auth.validation');
+const paramValidation = require('./validation');
 
 /** POST /api/auth/login - Returns token if correct username and password is provided */
 router.route('/login')

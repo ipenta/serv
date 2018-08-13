@@ -1,4 +1,4 @@
-const model = require('./entity.model');
+const model = require('./model');
 const APIError = require('../../utils/APIError');
 const httpStatus = require('http-status');
 

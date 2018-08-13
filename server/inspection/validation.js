@@ -4,10 +4,13 @@ const Joi = require('joi');
  */
 
 module.exports = {
-  entity: {
+  model: {
     body: {
       type: Joi.string().required(),
-      name: Joi.string().required()
+      text: Joi.string().required(),
+      price: Joi.string().required(),
+      unit: Joi.string().required(),
+      methods: Joi.object().required()
     }
   }
 };

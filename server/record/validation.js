@@ -1,12 +1,10 @@
-const Joi = require('Joi');
-
+const Joi = require('joi');
 /**
- * 检测委托信息
+ * 单位信息(type:施工，监理，建设，监察)
  */
 
 module.exports = {
-  // POST /api/auth/login
-  record: {
+  model: {
     body: {
       title: Joi.string().required(),
       project: Joi.array().required(),

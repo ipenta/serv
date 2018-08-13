@@ -1,9 +1,10 @@
 const Joi = require('joi');
 /**
- * 检测项目 信息
+ * 单位信息(type:施工，监理，建设，监察)
  */
+
 module.exports = {
-  project: {
+  model: {
     body: {
       name: Joi.string().required(),
       entities: Joi.array().required()
