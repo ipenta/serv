@@ -27,7 +27,11 @@ const config = {
   mongo: {
     host: envVars.MONGO_HOST,
     port: envVars.MONGO_PORT
-  }
+  },
+  whitelist: [
+    {url: '/v1/auth/login', methods: ['POST']},
+    {url: '/v1/auth/register', methods: ['POST']}
+  ]
 };
 
 module.exports = config;

@@ -6,16 +6,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const httpStatus = require('http-status');
+const jwt = require('express-jwt');
 
 const {supportRouter,serverRouter} = require('./router');
-
-const tokenfilter = require('./tokenfilter');
 const expressValidation = require('express-validation');
 
 const config = require('./config');
 const APIError = require('../support/utils/APIError');
-
-app.set('jwtSecret',config.jwtSecret)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,12 +20,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 
-app.use(tokenfilter)
-
 // 系统级别API
-app.use(config.apiPrefix,supportRouter)
+app.use(config.apiPrefix,
+  jwt({ secret: config.jwtSecret }).unless({path:config.whitelist}),
+  supportRouter);
 // 用户级别API
-app.use(config.apiPrefix,serverRouter)
+app.use(config.apiPrefix,serverRouter);
 
 app.use((err, req, res, next) => {
   if (err instanceof expressValidation.ValidationError) {
