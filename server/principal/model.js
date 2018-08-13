@@ -5,7 +5,7 @@ const ModelSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: {
+  phonenum: {
     type: String,
     required: true
   }

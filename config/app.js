@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors');
 const helmet = require('helmet');
+const jwt = require('express-jwt');
 
 const registerRouter = require('./router');
 
@@ -22,6 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 
-registerRouter(app)
+registerRouter(app);
 
 module.exports = app;

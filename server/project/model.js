@@ -5,7 +5,7 @@ const ModelSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: {
+  entities: {
     type: String,
     required: true
   }
