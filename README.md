@@ -5,7 +5,7 @@
 
 ## 结构
 ```
-.
+serv
 ├── app.js  // 入口
 ├── config  // 项目配置
 ├── server  // 非系统级API
@@ -26,7 +26,7 @@
 ```
 project
 ├── project.router.js     // 路由
-├── project.validation.js // 传入参数验证
+├── project.validation.js // 基于`joi`的传入参数验证
 ├── project.controller.js // 业务逻辑
 └── project.model.js      // 基于mongoose的实体model
 ```
