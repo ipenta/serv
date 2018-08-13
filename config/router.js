@@ -3,11 +3,11 @@ const config = require('./config');
 const router = require('express').Router();
 const httpStatus = require('http-status');
 const expressValidation = require('express-validation');
-const APIError = require('../support/utils/APIError');
+const APIError = require('../utils/APIError');
 
 const jwt = require('express-jwt');
 
-const { routerFilter } = require('../support/utils/traversal');
+const { routerFilter } = require('../utils/traversal');
 
 const supportDir = path.resolve(__dirname, '../support');
 const serverDir = path.resolve(__dirname, '../server');

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Auth = require('./auth.model');
 const config = require('../../config/config');
-const APIError = require('../utils/APIError');
+const APIError = require('../../utils/APIError');
 const httpStatus = require('http-status');
 
 const login = function (req, resp, next) {
