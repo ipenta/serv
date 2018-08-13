@@ -22,7 +22,7 @@ const config = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   jwtSecret: cert,
-  apiPrefix: envVars.API_PREFIX,
+  apiVersion: envVars.API_VERSION,
   root: process.cwd(),
   mongo: {
     host: envVars.MONGO_HOST,
