@@ -15,23 +15,23 @@ const login = function (req, resp, next) {
           identifier: result.identifier
         })
       }else{
-        const err = new APIError('Authentication error', httpStatus.UNAUTHORIZED, true);
+        const err = new APIError('没有权限', httpStatus.UNAUTHORIZED, true);
         return next(err);
       }
     })
 }
 
 const register = function (req, resp, next) {
-  Auth.findOne(req.body).catch(err => APIError(err))
+  Auth.findOne(req.body)
     .then(result => {
       if (result) {
-        const err = new APIError('data existed',httpStatus.NOT_FOUND, true);
+        const err = new APIError('用户名已经存在',httpStatus.CONFLICT, true);
         return next(err);
       }else {
         Auth.create(req.body).catch(err => APIError(err))
           .then(result => resp.json(result))
       }
-    })
+    }).catch(err => next(new APIError(err)))
 }
 
 
