@@ -3,7 +3,12 @@ const APIError = require('../../utils/APIError');
 const httpStatus = require('http-status');
 
 const list = function (req, resp) {
-  model.find()
+  let name = req.query.name
+  let query = {}
+  if (name) {
+    query = { name: eval('/'+name+'/i') }
+  }
+  model.find(query)
     .then(result => {
       resp.json(result)
     }).catch(err => next(new APIError(err)))
@@ -43,8 +48,8 @@ const patch = function (req, resp, next) {
   }).catch(err => next(new APIError(err)))
 }
 
-const remove = function (req, resp) {
-  model.remove(req.params.id)
+const remove = function (req, resp,next) {
+  model.remove({_id : req.params.id})
     .then(result => {
       resp.json(result)
     }).catch(err => next(new APIError(err)))
