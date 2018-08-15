@@ -7,11 +7,11 @@ const controller = require('./controller');
 
 router.route('/')
   .get(controller.list)
-  .post(validate(validation.model), controller.create)
+  .post(controller.create)
 
 router.route('/:id')
   .get(controller.findById)
-  .patch(validate(validation.model), controller.patch)
-  .delete(validate(validation.model), controller.remove)
+  .patch(validate(validation.patch), controller.patch)
+  .delete(controller.remove)
 
 module.exports = router;

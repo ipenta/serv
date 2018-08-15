@@ -4,7 +4,16 @@ const Joi = require('joi');
  */
 
 module.exports = {
-  model: {
+  post: {
+    body: {
+      name: Joi.string().required(),
+      phonenum: Joi.string().required()
+    }
+  },
+  patch: {
+    params: {
+      id: Joi.string().required()
+    },
     body: {
       name: Joi.string().required(),
       phonenum: Joi.string().required()
