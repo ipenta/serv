@@ -11,7 +11,7 @@ router.route('/')
 
 router.route('/:id')
   .get(controller.findById)
-  .patch(validate(validation.patch), controller.patch)
+  .patch(validate(validation.patch), controller.update)
   .delete(controller.remove)
 
 module.exports = router;
