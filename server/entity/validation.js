@@ -6,7 +6,6 @@ const Joi = require('joi');
 module.exports = {
   model: {
     body: {
-      type: Joi.string().required(),
       name: Joi.string().required()
     }
   }
