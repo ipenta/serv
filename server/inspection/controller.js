@@ -11,10 +11,10 @@ const update = function (req, resp, next) {
 }
 
 const list = function (req, resp) {
-  let name = req.query.text
+  let text = req.query.text
   let query = {}
-  if (name) {
-    query = { name: eval('/'+text+'/i') }
+  if (text) {
+    query = { text: eval('/'+text+'/i') }
   }
   model.find(query)
     .then(result => resp.json(result))
