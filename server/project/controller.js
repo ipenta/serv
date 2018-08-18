@@ -1,6 +1,7 @@
 const model = require('./model');
 const APIError = require('../../utils/APIError');
 const httpStatus = require('http-status');
+const isEqual = require('lodash.isequal');
 
 const create = function (req, resp, next) {
   _checkQuery(req, resp, next).then(()=>{
@@ -10,7 +11,7 @@ const create = function (req, resp, next) {
 
 const update = function (req, resp, next) {
   _checkQuery(req, resp, next).then(()=>{
-    return model.update({ _id: req.params.id }, {$set:req.body} ).then(result => resp.json(result))
+    return model.updateOne({ _id: req.params.id }, {$set:req.body} ).then(result => resp.json(result))
   }).catch(err => next(new APIError(err)))
 }
 
@@ -40,11 +41,10 @@ const remove = function (req, resp,next) {
 const _checkQuery = function (req,resp,next) {
   const query = req.body
   const queryItem = {name:query.name}
-  return model.findOne({ $or: [query,queryItem]})
-    .then(result => {
-      if (result) {
-        const statusText = (result.name === query.name) ? '委托信息未作修改':'委托电话已被注册'
-        const err = new APIError(statusText,httpStatus.CREATED, true);
+  return model.findOne(queryItem)
+    .then(doc => {
+      if (doc) {
+        const err = new APIError("项目已存在",httpStatus.CREATED, true);
         return next(err);
       }
     })

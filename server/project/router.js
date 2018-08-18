@@ -12,6 +12,6 @@ router.route('/')
 router.route('/:id')
   .get(controller.findById)
   .patch(validate(validation.model), controller.update)
-  .delete(validate(validation.model), controller.remove)
+  .delete(controller.remove)
 
 module.exports = router;
