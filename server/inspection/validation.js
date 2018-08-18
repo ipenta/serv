@@ -8,9 +8,9 @@ module.exports = {
     body: {
       type: Joi.string().required(),
       text: Joi.string().required(),
-      price: Joi.string().required(),
+      price: Joi.number().integer(),
       unit: Joi.string().required(),
-      methods: Joi.object().required()
+      methods: Joi.array().required()
     }
   }
 };

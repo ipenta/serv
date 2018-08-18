@@ -17,10 +17,9 @@ const ModelSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  methods: {
-    type: String,
-    required: true
-  }
+  methods: [{
+    type: String
+  }]
 });
 
 module.exports = mongoose.model('Inspection', ModelSchema);
