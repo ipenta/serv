@@ -23,9 +23,8 @@ const list = function (req, resp) {
 
 const findById = function (req, resp) {
   model.findById(req.params.id)
-    .then(result => {
-      resp.json(result)
-    }).catch(err => next(new APIError(err)))
+    .then(result => resp.json(result))
+    .catch(err => next(new APIError(err)))
 }
 
 const remove = function (req, resp,next) {
