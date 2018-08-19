@@ -20,6 +20,8 @@ const ModelSchema = new mongoose.Schema({
   methods: [{
     type: String
   }]
+},{
+  versionKey: false
 });
 
 module.exports = mongoose.model('Inspection', ModelSchema);
