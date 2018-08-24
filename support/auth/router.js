@@ -12,5 +12,8 @@ router.route('/login')
 router.route('/register')
   .post(validate(paramValidation.register), authController.register);
 
+router.route('/info')
+  .get(authController.getAuthInfo);
+
 
 module.exports = router;

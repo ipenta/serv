@@ -15,7 +15,6 @@ const update = function (req, resp, next) {
 }
 
 const list = function (req, resp) {
-  console.log(req.decoded)
   let name = req.query.name
   let query = {}
   if (name) {

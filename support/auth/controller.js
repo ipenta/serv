@@ -7,7 +7,7 @@ const httpStatus = require('http-status');
 const login = function (req, resp, next) {
   model.findOne(req.body, 'identity_type identifier credential').then(result => {
     if (result) {
-      const token = jwt.sign({ identifier: result.identifier }, config.jwtSecret)
+      const token = jwt.sign({ id: result._id, identifier: result.identifier }, config.jwtSecret)
       resp.json({status: "success", data: { token }})
     }else{
       resp.json({status: "fail", message: "无法匹配登录信息，登录失败"})
@@ -29,8 +29,15 @@ const register = function (req, resp, next) {
   }).catch(err => next(new APIError(err)))
 }
 
-
-function getRandomNumber() {
+const getAuthInfo = function (req, resp, next) {
+  if (!req.user) {
+    resp.status(401).json({status: "fail", message: "没有访问权限"})
+  }
+  model.findOne({ identifier: req.user.identifier }).then(result => {
+    if (result) {
+      resp.json({status: 'success', data: result})
+    }
+  }).catch(err => next(new APIError(err)))
 }
 
-module.exports = { login, register, getRandomNumber };
+module.exports = { login, register, getAuthInfo };
