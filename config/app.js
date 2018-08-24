@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
-const jwt = require('express-jwt');
 
 const registerRouter = require('./router');
 

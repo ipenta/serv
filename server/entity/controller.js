@@ -15,6 +15,7 @@ const update = function (req, resp, next) {
 }
 
 const list = function (req, resp) {
+  console.log(req.decoded)
   let name = req.query.name
   let query = {}
   if (name) {
@@ -33,6 +34,7 @@ const findById = function (req, resp, next) {
 }
 
 const remove = function (req, resp,next) {
+  console.log(req.params.id)
   model.remove({_id : req.params.id})
     .then(result => resp.json(result))
     .catch(err => next(new APIError(err)))
