@@ -30,12 +30,23 @@ const register = function (req, resp, next) {
 }
 
 const getAuthInfo = function (req, resp, next) {
-  if (!req.user) {
-    resp.status(401).json({status: "fail", message: "没有访问权限"})
-  }
-  model.findOne({ identifier: req.user.identifier }).then(result => {
+  model.findOne({ identifier: req.user.identifier }, 'identifier').then(result => {
     if (result) {
-      resp.json({status: 'success', data: result})
+      _result = Object.assign({_id:result._id,identifier: result.identifier},
+        {menus: [
+          { name: "分析管理", path: "/analysis", icon: "el-icon-star-off",
+            children: [{
+              icon: "el-icon-star-off",
+              name: "用户分析",
+              path: "/analysis/user"
+            }, {
+              icon: "el-icon-star-off",
+              name: "档案分析",
+              path: "/analysis/profile"
+            }]
+          }
+      ]})
+      resp.json({status: 'success', data: _result})
     }
   }).catch(err => next(new APIError(err)))
 }

@@ -21,7 +21,7 @@ const list = function (req, resp) {
     query = { name: eval('/'+name+'/i') }
   }
   model.find(query)
-    .then(result => resp.json(result))
+    .then(result => resp.json({status:'success',data:result}))
     .catch(err => next(new APIError(err)))
 }
 
