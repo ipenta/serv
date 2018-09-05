@@ -34,15 +34,41 @@ const getAuthInfo = function (req, resp, next) {
     if (result) {
       _result = Object.assign({_id:result._id,identifier: result.identifier},
         {menus: [
-          { name: "分析管理", path: "/analysis", icon: "el-icon-star-off",
+          { name: "数据管理", path: "/data", icon: "el-icon-star-off",
             children: [{
               icon: "el-icon-star-off",
-              name: "用户分析",
-              path: "/analysis/user"
+              name: "委托人管理",
+              path: "/principal"
             }, {
               icon: "el-icon-star-off",
-              name: "档案分析",
-              path: "/analysis/profile"
+              name: "单位管理",
+              path: "/entity"
+            }, {
+              icon: "el-icon-star-off",
+              name: "验证项目管理",
+              path: "/inspection",
+              children: [{
+                icon: "el-icon-star-off",
+                name: "验证项目列表",
+                path: "/inspection/list"
+              }, {
+                icon: "el-icon-star-off",
+                name: "验证项目表单",
+                path: "/inspection/form"
+              }]
+            }, {
+              icon: "el-icon-star-off",
+              name: "参与商管理",
+              path: "/project",
+              children: [{
+                icon: "el-icon-star-off",
+                name: "材料列表",
+                path: "/project/list"
+              }, {
+                icon: "el-icon-star-off",
+                name: "材料表单",
+                path: "/project/form"
+              }]
             }]
           }
       ]})
