@@ -5,19 +5,20 @@
 
 ## 结构
 ```
-serv
-├── app.js  // 入口
-├── config  // 项目配置
-├── server  // 非系统级API
-├── support // 系统级API
-├── utils   // 工具类
-├── data    // mongodb本地映射
-├── dev.sh  // 开发脚本
-├── docker-compose.yml //docker-compose配置
-├── Dockerfile //docker镜像文件
-├── node_modules //
-├── package.json //
-└── README.md
+├── dev.sh
+├── docker-compose.yml
+├── README.md
+└── server
+    ├── app.js
+    ├── config
+    ├── data
+    ├── Dockerfile
+    ├── init.sh
+    ├── node_modules
+    ├── package.json
+    ├── server
+    ├── support
+    └── utils
 ```
 
 ## 开发约束
