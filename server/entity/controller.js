@@ -15,10 +15,9 @@ const update = function (req, resp, next) {
 }
 
 const list = function (req, resp) {
-  let name = req.query.name
   let query = {}
-  if (name) {
-    query = { name: eval('/'+name+'/i') }
+  if (req.query.type && req.query.value) {
+    query[req.query.type] = eval('/'+req.query.value+'/i')
   }
   model.find(query)
     .then(result => resp.json({status:'success',data:result}))

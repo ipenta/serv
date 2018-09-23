@@ -34,6 +34,7 @@ const getAuthInfo = function (req, resp, next) {
     if (result) {
       _result = Object.assign({_id:result._id,identifier: result.identifier},
         {menus: [
+          { name: "委托单管理", path: "/record", icon: "el-icon-star-off" },
           { name: "数据管理", path: "/data", icon: "el-icon-star-off",
             children: [{
               icon: "el-icon-star-off",
