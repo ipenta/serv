@@ -1,1 +1,1 @@
-docker-compose -f api/docker-compose.yml up --force-recreate
+docker-compose up --force-recreate
